@@ -14,9 +14,15 @@ export default function HeaderDefault() {
       <H.Main>
         <G.Container alignItems='center' justifyContent='space-between'>
           <IconMenuHamburger />
-          <H.Logo>
+          {
+            /**
+             * <H.Logo>
             <Image src={Logo} alt='Logo' />
           </H.Logo>
+             * 
+             */
+          }
+          
           <H.Input>
             <Search />
           </H.Input>
