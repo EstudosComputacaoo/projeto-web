@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Link from "next/link";
+
 
 export const Button = styled.button`
   display: flex;
@@ -14,12 +14,11 @@ export const Button = styled.button`
   background-color: #ff6500;
   border: 1px solid #ff6500;
   cursor: pointer;
-`;
-
-export const Text = styled(Link)`
+  color: #fff;
   font-size: 12px;
   font-weight: 700;
   line-height: 18px;
   color: #fff;
   text-transform: uppercase;
 `;
+
