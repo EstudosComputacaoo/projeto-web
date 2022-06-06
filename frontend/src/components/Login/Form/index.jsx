@@ -1,25 +1,35 @@
-import { useEffect, useState } from 'react';
-import { Form, Input } from './style';
+import { ErrorMessage, Form, Input, InputWrapper } from './style';
+import { useForm } from 'react-hook-form';
+import { Button } from './style';
+import { useAuthContext } from '../../_Context/AuthContext';
 
 export default function FormLogin() {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 
-    const [userName, setUserName] = useState('')
+	const { getUser } = useAuthContext();
 
-    useEffect(() =>{
-        console.log(userName)
-        var re = /\S+@\S+\.\S+/;
-        console.log(
-           
-            re.test(userName)
-          )
+	const handleLogin = (data, event) => {
+		event.preventDefault();
 
-    }, [userName])
+		getUser(data);
+	};
+
 	return (
-		<Form>
+		<Form onSubmit={handleSubmit(handleLogin)}>
 			<h1>Fazer login</h1>
-			<Input placeholder='E-mail' type='text' onChange={e => setUserName(e.target.value)} />
-			<Input placeholder='Senha' type='password' />
-			<button>Login</button>
+			<InputWrapper>
+				<Input {...register('email', { required: true })} name='email' placeholder='E-mail' type='text' />
+				{errors?.email && <ErrorMessage>Esse campo é obrigatório</ErrorMessage>}
+			</InputWrapper>
+			<InputWrapper>
+				<Input {...register('password', { required: true })} name='password' placeholder='Senha' type='password' />
+				{errors?.password && <ErrorMessage>Esse campo é obrigatório</ErrorMessage>}
+			</InputWrapper>
+			<Button type='submit'>Login</Button>
 		</Form>
 	);
 }

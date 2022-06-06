@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoginButton from "../LoginButton";
 import * as MH from "./style";
+import { useAuthContext } from '../../../components/_Context/AuthContext'
 
 export default function IconMenuHamburger() {
   const [isClosed, setIsClosed] = useState(true);
   const [isLogged, setIsLogged] = useState(true);
+
+  const { user } = useAuthContext()
+
+  useEffect(() => {console.log(user)}, [])
 
   const perfil = ["Minha conta", "meus pedidos", "favoritos", "atendimento"];
 
@@ -12,7 +17,6 @@ export default function IconMenuHamburger() {
 
   const links = ["seja prime", "cartão", "Pix"];
 
-  let name = "Rodolfo";
   return (
     <>
       <MH.Menu onClick={() => setIsClosed(!isClosed)}>
@@ -24,7 +28,7 @@ export default function IconMenuHamburger() {
         <MH.ButtonClose onClick={() => setIsClosed(true)}>x</MH.ButtonClose>
 
         <MH.ContentTitle>
-          {`Olá${isLogged ? " " + name : ". Faça seu login"}`}
+          {`Olá${user?.nome ? " " + user.nome : ". Faça seu login"}`}
         </MH.ContentTitle>
 
         <MH.MenuContentList>
