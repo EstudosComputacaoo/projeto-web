@@ -25,7 +25,7 @@ export default function Card({ product }) {
         <Price product={product} />
         <Label labels={product.labels} />
       </C.Info>
-      <Button />
+      <Button product={product}/>
     </C.Card>
   );
 }

@@ -5,11 +5,8 @@ import { useAuthContext } from '../../../components/_Context/AuthContext'
 
 export default function IconMenuHamburger() {
   const [isClosed, setIsClosed] = useState(true);
-  const [isLogged, setIsLogged] = useState(true);
 
   const { user } = useAuthContext()
-
-  useEffect(() => {console.log(user)}, [])
 
   const perfil = ["Minha conta", "meus pedidos", "favoritos", "atendimento"];
 
