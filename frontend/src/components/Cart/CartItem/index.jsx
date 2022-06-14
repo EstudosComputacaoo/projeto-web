@@ -10,7 +10,7 @@ export default function CartItem({ product }) {
 				<Title>{product?.title}</Title>
 				<span>{product?.price?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
 			</Content>
-			<span>{`Quantidade: ${product?.qtd}`}</span>
+			<span>{`Quantidade: ${product?.quantity}`}</span>
 		</Item>
 	);
 }

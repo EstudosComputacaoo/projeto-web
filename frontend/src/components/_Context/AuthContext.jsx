@@ -18,7 +18,7 @@ export function AuthProvider({ children, ...props }) {
 			.then((res) => res.json())
 			.then((data) => {
 				setUser(data);
-				setCookies('user_id', data.id);
+				setCookies('user_id', data._id);
 				router.push('/');
 			});
 	};

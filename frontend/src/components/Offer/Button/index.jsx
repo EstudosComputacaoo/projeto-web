@@ -8,17 +8,19 @@ import { useAuthContext } from '../../_Context/AuthContext';
 
 export default function Button({ product }) {
 	const { user } = useAuthContext();
-	const { setCartItems, setItems, items } = useCartContext();
+	const { setCartItems, setItems, items, createCart } = useCartContext();
 
 	const router = useRouter();
 
 	const handleProduct = (e) => {
 		e.preventDefault();
 		if (!user) router.push('/login');
-		else {
+		/*else {
 			setCartItems((prevState) => prevState + 1);
 			checkIfProductExists(product);
 		}
+		*/
+		else createCart(product)
 	};
 
 	const checkIfProductExists = (product) => {
